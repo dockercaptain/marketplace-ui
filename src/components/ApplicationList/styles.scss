@@ -12,15 +12,22 @@
     min-width: 300px;
     width: 50px;
     margin-bottom: 1rem;
+    margin-right: auto;
     margin-left: auto;
   }
 }
 
 .application-item-container {
-  background: linear-gradient(160deg, #eef8db, #ffffff);
+  background: linear-gradient(90deg, #eef8db, #ffffff);
+  border: 1px solid transparent;
   display: flex;
   width: 25rem;
   cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(#eef8db, #eef8db);
+    border: 1px solid #d7e7a9;
+  }
 
   .side-bar {
     width: 0.5rem;
