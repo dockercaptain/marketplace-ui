@@ -1,0 +1,46 @@
+.application-container {
+  padding: 1rem 0;
+
+  .application-list-items {
+    user-select: none;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .application-search {
+    min-width: 300px;
+    width: 50px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+  }
+}
+
+.application-item-container {
+  background: linear-gradient(160deg, #eef8db, #ffffff);
+  display: flex;
+  width: 25rem;
+  cursor: pointer;
+
+  .side-bar {
+    width: 0.5rem;
+    height: 100%;
+    background: #d7e7a9;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .application-item-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .application-item-content {
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .application-item-title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
