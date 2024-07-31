@@ -1,25 +1,40 @@
 import { Alert, Form, Spinner } from "react-bootstrap";
-import ApplicationItem from "./ApplicationItem";
-import "./styles.scss";
-import { fetchApplications } from "../../services/application.api";
+import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import ApplicationItem from "./ApplicationItem";
 import { ApplicationType } from "./ApplicationTypes";
+import { fetchApplications } from "../../services/application.api";
+import "./styles.scss";
 
 const ApplicationList = () => {
-  const {
-    data,
-    isLoading: loading,
-    error,
-  } = useQuery<ApplicationType[]>({
+  const [search, setSearch] = useState("");
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+  const { data, isLoading, error } = useQuery<ApplicationType[]>({
     queryKey: ["applications"],
     queryFn: fetchApplications,
   });
+  const filteredData = useMemo(
+    () =>
+      data?.filter(
+        (application) =>
+          application.AppName.toLowerCase().includes(search.toLowerCase()) ||
+          application.Description.toLowerCase().includes(search.toLowerCase())
+      ) || [],
+    [data, search]
+  );
   return (
     <div className="application-container">
       <div className="application-search">
-        <Form.Control type="text" placeholder="Search" />
+        <Form.Control
+          type="text"
+          placeholder="Search"
+          value={search}
+          onChange={handleSearch}
+        />
       </div>
-      {loading ? (
+      {isLoading ? (
         <div className="w-100 d-flex justify-content-center p-5">
           <Spinner />
         </div>
@@ -29,7 +44,7 @@ const ApplicationList = () => {
         </Alert>
       ) : (
         <div className="application-list-items">
-          {data?.map((application) => (
+          {filteredData?.map((application) => (
             <ApplicationItem application={application} />
           ))}
         </div>
