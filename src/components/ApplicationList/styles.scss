@@ -20,6 +20,7 @@
 .application-item-container {
   background: linear-gradient(90deg, #eef8db, #ffffff);
   border: 1px solid transparent;
+  border-radius: 0.5rem;
   display: flex;
   width: 25rem;
   cursor: pointer;
@@ -30,23 +31,24 @@
   }
 
   .side-bar {
-    width: 0.5rem;
+    width: 0.75rem;
     height: 100%;
     background: #d7e7a9;
     border-radius: 0.5rem 0 0 0.5rem;
   }
 
-  .application-item-icon {
+  .icon {
     width: 65px;
     height: 65px;
   }
 
-  .application-item-content {
+  .content {
     padding: 0.5rem;
     display: flex;
     gap: 0.5rem;
   }
-  .application-item-title {
+
+  .title {
     font-size: 1rem;
     font-weight: 600;
   }

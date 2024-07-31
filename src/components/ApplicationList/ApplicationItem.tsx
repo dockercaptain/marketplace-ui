@@ -11,17 +11,15 @@ const ApplicationItem: FunctionComponent<ApplicationItemProps> = ({
   console.log(application);
 
   return (
-    <div className="application-item-container rounded">
-      <div className="side-bar"></div>
-      <div className="application-item-content">
-        <div className="application-item-icon">
+    <div className="application-item-container">
+      <div className="side-bar" />
+      <div className="content">
+        <div className="icon">
           {getIcon(application.ImageName, "w-100 h-100")}
         </div>
-        <div className="application-item__content">
-          <div className="application-item-title">{application.AppName}</div>
-          <div className="application-item-description">
-            {application.Description}
-          </div>
+        <div>
+          <div className="title">{application.AppName}</div>
+          <div className="description">{application.Description}</div>
         </div>
       </div>
     </div>
