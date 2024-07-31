@@ -1,29 +1,19 @@
-import { Form, Spinner } from "react-bootstrap";
+import { Alert, Form, Spinner } from "react-bootstrap";
 import ApplicationItem from "./ApplicationItem";
-import { ApplicationType } from "./ApplicationTypes";
 import "./styles.scss";
-import { useEffect, useState } from "react";
 import { fetchApplications } from "../../services/application.api";
+import { useQuery } from "@tanstack/react-query";
+import { ApplicationType } from "./ApplicationTypes";
 
 const ApplicationList = () => {
-  const [data, setData] = useState<ApplicationType[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  const fetch = async () => {
-    try {
-      setLoading(true);
-      const res = await fetchApplications();
-      setData(res);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetch();
-  }, []);
+  const {
+    data,
+    isLoading: loading,
+    error,
+  } = useQuery<ApplicationType[]>({
+    queryKey: ["applications"],
+    queryFn: fetchApplications,
+  });
   return (
     <div className="application-container">
       <div className="application-search">
@@ -33,9 +23,13 @@ const ApplicationList = () => {
         <div className="w-100 d-flex justify-content-center p-5">
           <Spinner />
         </div>
+      ) : error ? (
+        <Alert variant="danger">
+          Error fetching applications: {error.message}
+        </Alert>
       ) : (
         <div className="application-list-items">
-          {data.map((application) => (
+          {data?.map((application) => (
             <ApplicationItem application={application} />
           ))}
         </div>
