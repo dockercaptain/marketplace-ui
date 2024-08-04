@@ -1,6 +1,6 @@
 import { Container, Navbar } from "react-bootstrap";
 import "./App.scss";
-import ApplicationList from "./components/ApplicationList/ApplicationList";
+import AppRoutes from "./routes/Routes";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         </Container>
       </Navbar>
       <Container>
-        <ApplicationList />
+        <AppRoutes />
       </Container>
     </>
   );
