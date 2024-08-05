@@ -7,7 +7,7 @@
   }
   .tab-contents {
     height: calc(100vh - 260px);
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
   }
   .form-group-container {

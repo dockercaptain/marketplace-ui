@@ -1,6 +1,7 @@
 import { Button, Col, Form, Row, Tab, Tabs } from "react-bootstrap";
 import "./styles.scss";
 import { useState } from "react";
+import Divider from "../../common/components/Divider";
 
 const Create = () => {
   const initialData = {
@@ -51,6 +52,7 @@ const Create = () => {
             <div className="tab-contents">
               <div className="form-section">
                 <h5>Environment </h5>
+                <Divider />
                 <Row>
                   <Col>Environment*</Col>
                   <Col sm={8}>
@@ -75,6 +77,7 @@ const Create = () => {
               </div>
               <div className="form-section">
                 <h5>Server details </h5>
+                <Divider />
                 <Row>
                   <Col>server name*</Col>
                   <Col sm={8}>
@@ -155,6 +158,7 @@ const Create = () => {
               </div>
               <div className="form-section">
                 <h5>Size </h5>
+                <Divider />
                 <Row>
                   <Col>
                     <Form.Label>cpu*</Form.Label>
@@ -248,7 +252,7 @@ const Create = () => {
             </div>
           </Tab>
           <Tab eventKey="network" title="Network">
-            Tab content for network
+            <div className="tab-contents">Network details.</div>
           </Tab>
         </Tabs>
         <Button variant="primary" type="submit" style={{ display: "block" }}>
