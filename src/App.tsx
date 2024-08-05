@@ -7,18 +7,20 @@ function App() {
   const navigate = useNavigate();
   return (
     <>
-      <Navbar className="bg-body-secondary">
-        <Container>
-          <Navbar.Brand
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Market Place
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
+      <div className="nav-container">
+        <Navbar className="bg-body-secondary">
+          <Container>
+            <Navbar.Brand
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Market Place
+            </Navbar.Brand>
+          </Container>
+        </Navbar>
+      </div>
       <Container className="app-container">
         <AppRoutes />
       </Container>
