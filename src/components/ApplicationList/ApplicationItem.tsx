@@ -11,7 +11,7 @@ const ApplicationItem: FunctionComponent<ApplicationItemProps> = ({
 }) => {
   const navigate = useNavigate();
   const handleApplicationClick = () => {
-    if (application.Id === 1) {
+    if (application.Id === 4) {
       navigate(`/application/postgres`);
     }
   };

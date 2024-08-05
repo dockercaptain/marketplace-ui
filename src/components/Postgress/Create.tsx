@@ -48,7 +48,7 @@ const Create = () => {
           className="mb-3"
         >
           <Tab eventKey="basic" title="Basic">
-            <div className="tab-content">
+            <div className="tab-contents">
               <div className="form-section">
                 <h5>Environment </h5>
                 <Form.Group>
