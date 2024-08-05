@@ -45,7 +45,7 @@ const ApplicationList = () => {
       ) : (
         <div className="application-list-items">
           {filteredData?.map((application) => (
-            <ApplicationItem application={application} />
+            <ApplicationItem key={application.Id} application={application} />
           ))}
         </div>
       )}

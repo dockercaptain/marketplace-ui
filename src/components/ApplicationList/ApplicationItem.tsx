@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { useNavigate } from "react-router-dom";
 import { ApplicationType } from "./ApplicationTypes";
 import getIcon from "../../common/utils/getIcon";
 
@@ -8,10 +9,17 @@ export type ApplicationItemProps = {
 const ApplicationItem: FunctionComponent<ApplicationItemProps> = ({
   application,
 }) => {
-  console.log(application);
-
+  const navigate = useNavigate();
+  const handleApplicationClick = () => {
+    if (application.Id === 1) {
+      navigate(`/application/postgres`);
+    }
+  };
   return (
-    <div className="application-item-container">
+    <div
+      className="application-item-container"
+      onClick={handleApplicationClick}
+    >
       <div className="side-bar" />
       <div className="content">
         <div className="icon">
