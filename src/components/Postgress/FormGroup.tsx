@@ -1,43 +1,27 @@
-import { Col, Form, Row } from "react-bootstrap";
+import { ComponentPropsWithoutRef } from "react";
+import { Row, Col, Form } from "react-bootstrap";
 
-type FormGroupProps = {
+interface FormGroupProps extends ComponentPropsWithoutRef<typeof Form.Control> {
   label: string;
-  value: string;
-  type?: string;
-  name: string;
   isSelect?: boolean;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   options?: string[];
   errorMessage?: string;
-  placeholder?: string;
-  required?: boolean;
-};
+}
 
-export const FormGroup = ({
+const FormGroup = ({
   label,
-  value,
-  handleChange,
-  name,
-  type,
+  isSelect,
   options,
   errorMessage,
-  placeholder,
-  isSelect,
-  required,
+  ...rest
 }: FormGroupProps) => {
   return (
     <Row>
-      <Col>{label}</Col>
-      <Col sm={10}>
-        <Form.Group>
+      <Col>
+        <Form.Group controlId={`form${rest.name}`}>
+          <Form.Label>{label}</Form.Label>
           {isSelect ? (
-            <Form.Control
-              required
-              as="select"
-              name={name}
-              value={value}
-              onChange={handleChange}
-            >
+            <Form.Control as="select" {...rest}>
               {options?.map((option, index) => (
                 <option key={index} value={option}>
                   {option}
@@ -45,14 +29,7 @@ export const FormGroup = ({
               ))}
             </Form.Control>
           ) : (
-            <Form.Control
-              required={required}
-              type={type}
-              name={name}
-              value={value}
-              onChange={handleChange}
-              placeholder={placeholder}
-            />
+            <Form.Control {...rest} />
           )}
           <Form.Control.Feedback type="invalid">
             {errorMessage}
