@@ -59,8 +59,8 @@ const Create = () => {
                   value={data.environment}
                   isSelect
                   name="environment"
-                  handleChange={handleChange}
                   options={["Sandbox", "Development", "Production"]}
+                  onChange={handleChange}
                   errorMessage="Please choose an environment."
                 />
               </div>
@@ -73,29 +73,27 @@ const Create = () => {
                   placeholder="Enter Server name"
                   type="text"
                   name="serverName"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   errorMessage="Please enter server name."
                   required
                 />
-                {/*  Admin username**/}
                 <FormGroup
                   label="Admin username*"
                   value={data.adminUser}
                   placeholder="Enter admin username"
                   type="text"
                   name="adminUser"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   errorMessage="Please enter admin username."
                   required
                 />
-                {/* password */}
                 <FormGroup
                   label="Password*"
                   value={data.password}
                   placeholder="Enter password"
                   type="password"
                   name="password"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   errorMessage="Please enter password."
                   required
                 />
@@ -104,7 +102,7 @@ const Create = () => {
                   value={data.version}
                   isSelect
                   name="version"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   options={["16", "15", "14", "13", "12"]}
                   errorMessage="Please choose a version."
                 />
@@ -118,7 +116,7 @@ const Create = () => {
                   placeholder="Enter CPU"
                   type="number"
                   name="sizeCPU"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   errorMessage="Please enter CPU."
                   required
                 />
@@ -128,7 +126,7 @@ const Create = () => {
                   placeholder="Enter memory"
                   type="number"
                   name="sizeMemory"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   errorMessage="Please enter memory."
                   required
                 />
@@ -138,7 +136,7 @@ const Create = () => {
                   placeholder="Enter disk"
                   type="number"
                   name="sizeDisk"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   errorMessage="Please enter disk."
                   required
                 />
@@ -147,7 +145,7 @@ const Create = () => {
                   value={data.storageType}
                   isSelect
                   name="storageType"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   options={["HDD", "SSD_standard", "SSD_premium"]}
                   errorMessage="Please choose a storage class."
                   required
