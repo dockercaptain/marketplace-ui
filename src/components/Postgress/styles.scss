@@ -6,9 +6,10 @@
     gap: 0.5rem;
   }
   .tab-contents {
-    height: calc(100vh - 260px);
+    height: calc(100vh - 270px);
     overflow-y: auto;
     overflow-x: hidden;
+    padding: 1rem;
   }
   .form-group-container {
     display: flex;

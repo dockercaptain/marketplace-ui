@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const List = () => {
@@ -6,6 +6,7 @@ const List = () => {
   return (
     <div>
       <Button
+        variant="outlined"
         onClick={() => {
           navigate("./create");
         }}

@@ -3,6 +3,8 @@ import "./styles.scss";
 import { useState } from "react";
 import Divider from "../../common/components/Divider";
 import FormGroup from "./FormGroup";
+import { Slider } from "@mui/material";
+import FormRow from "./FormRow";
 
 const Create = () => {
   const initialData = {
@@ -13,10 +15,10 @@ const Create = () => {
     password: "",
     version: "16",
     environment: "Sandbox",
-    sizeDisk: "",
+    sizeDisk: 2,
     storageType: "HDD",
-    sizeCPU: "",
-    sizeMemory: "",
+    sizeCPU: 100,
+    sizeMemory: 200,
   };
   const [data, setData] = useState(initialData);
   const [key, setKey] = useState("basic");
@@ -110,36 +112,74 @@ const Create = () => {
               <div className="form-section">
                 <h5>Size </h5>
                 <Divider />
-                <FormGroup
-                  label="CPU*"
-                  value={data.sizeCPU}
-                  placeholder="Enter CPU"
-                  type="number"
-                  name="sizeCPU"
-                  onChange={handleChange}
-                  errorMessage="Please enter CPU."
-                  required
-                />
-                <FormGroup
-                  label="Memory*"
-                  value={data.sizeMemory}
-                  placeholder="Enter memory"
-                  type="number"
-                  name="sizeMemory"
-                  onChange={handleChange}
-                  errorMessage="Please enter memory."
-                  required
-                />
-                <FormGroup
-                  label="Disk*"
-                  value={data.sizeDisk}
-                  placeholder="Enter disk"
-                  type="number"
-                  name="sizeDisk"
-                  onChange={handleChange}
-                  errorMessage="Please enter disk."
-                  required
-                />
+                <FormRow label="CPU">
+                  <Slider
+                    defaultValue={70}
+                    valueLabelDisplay="auto"
+                    name="sizeCPU"
+                    value={data.sizeCPU}
+                    onChange={(e, value) => {
+                      setData({
+                        ...data,
+                        sizeCPU: value as number,
+                      });
+                    }}
+                    valueLabelFormat={(value) => {
+                      if (value === 1000) {
+                        return `1 core`;
+                      } else if (value >= 1000) {
+                        return `${(value / 1000).toFixed(1)} core`;
+                      }
+                      return `${value}m core`;
+                    }}
+                    min={100}
+                    max={2000}
+                    step={100}
+                  />
+                </FormRow>
+                <FormRow label="Memory">
+                  <Slider
+                    defaultValue={70}
+                    valueLabelDisplay="auto"
+                    name="sizeMemory"
+                    value={data.sizeMemory}
+                    onChange={(e, value) => {
+                      setData({
+                        ...data,
+                        sizeMemory: value as number,
+                      });
+                    }}
+                    valueLabelFormat={(value) => {
+                      if (value >= 1024) {
+                        return `${(value / 1024).toFixed(1)}GB`;
+                      }
+                      return `${value}MB`;
+                    }}
+                    min={200}
+                    max={6000}
+                    step={50}
+                  />
+                </FormRow>
+                <FormRow label="Disk">
+                  <Slider
+                    defaultValue={70}
+                    valueLabelDisplay="auto"
+                    name="sizeDisk"
+                    value={data.sizeDisk}
+                    onChange={(e, value) => {
+                      setData({
+                        ...data,
+                        sizeDisk: value as number,
+                      });
+                    }}
+                    valueLabelFormat={(value) => {
+                      return `${value}GB`;
+                    }}
+                    min={2}
+                    max={20}
+                    step={1}
+                  />
+                </FormRow>
                 <FormGroup
                   label="storage class*"
                   value={data.storageType}
