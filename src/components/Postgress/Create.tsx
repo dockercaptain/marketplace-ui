@@ -115,7 +115,7 @@ const Create = () => {
                 <FormRow label="CPU">
                   <Slider
                     defaultValue={70}
-                    valueLabelDisplay="auto"
+                    valueLabelDisplay="on"
                     name="sizeCPU"
                     value={data.sizeCPU}
                     onChange={(e, value) => {
@@ -140,7 +140,7 @@ const Create = () => {
                 <FormRow label="Memory">
                   <Slider
                     defaultValue={70}
-                    valueLabelDisplay="auto"
+                    valueLabelDisplay="on"
                     name="sizeMemory"
                     value={data.sizeMemory}
                     onChange={(e, value) => {
@@ -163,7 +163,7 @@ const Create = () => {
                 <FormRow label="Disk">
                   <Slider
                     defaultValue={70}
-                    valueLabelDisplay="auto"
+                    valueLabelDisplay="on"
                     name="sizeDisk"
                     value={data.sizeDisk}
                     onChange={(e, value) => {
