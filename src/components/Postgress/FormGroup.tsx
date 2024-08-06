@@ -18,8 +18,10 @@ const FormGroup = ({
   return (
     <Row>
       <Col>
+        <Form.Label>{label}</Form.Label>
+      </Col>
+      <Col sm={10}>
         <Form.Group controlId={`form${rest.name}`}>
-          <Form.Label>{label}</Form.Label>
           {isSelect ? (
             <Form.Control as="select" {...rest}>
               {options?.map((option, index) => (
